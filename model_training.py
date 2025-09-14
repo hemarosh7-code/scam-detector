@@ -78,6 +78,7 @@ class ScamDetectorModel:
         return proba[0,1]
     
     def save_model(self, filepath="scam_detector_model.pkl"):
+<<<<<<< HEAD
     	# store feature names from TF-IDF
     	self.feature_columns = self.vectorizer.get_feature_names_out()
     
@@ -90,6 +91,14 @@ class ScamDetectorModel:
     	print(f"Model + vectorizer + scaler + feature_columns saved to {filepath}")
 
     
+=======
+        joblib.dump({
+            "model": self.model,
+            "vectorizer": self.vectorizer
+        }, filepath)
+        print(f"Model + vectorizer saved to {filepath}")
+    
+>>>>>>> 26e895ed9305dc771af5c375c03bce8c6cf76643
     def load_model(self, filepath="scam_detector_model.pkl"):
         data = joblib.load(filepath)
         self.model = data["model"]
@@ -119,4 +128,8 @@ import joblib
 
 # After fitting vectorizer
 joblib.dump(detector.vectorizer, "vectorizer.pkl")
+<<<<<<< HEAD
 print("Vectorizer saved to vectorizer.pkl")
+=======
+print("Vectorizer saved to vectorizer.pkl")
+>>>>>>> 26e895ed9305dc771af5c375c03bce8c6cf76643
