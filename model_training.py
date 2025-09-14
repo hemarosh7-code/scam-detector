@@ -57,7 +57,7 @@ class ScamDetectorModel:
         else:
             raise ValueError("Only logistic is supported in this text mode")
         
-        grid = GridSearchCV(self.model, param_grid, cv=5, scoring="roc_auc", n_jobs=-1)
+        grid = GridSearchCV(self.model, param_grid, cv=5, scoring="roc_auc", n_jobs=1)
         grid.fit(X_train, y_train)
         self.model = grid.best_estimator_
         
