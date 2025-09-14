@@ -66,7 +66,8 @@ class TrendingResponse(BaseModel):
 # Load ML model
 model_data = joblib.load('scam_detector_model.pkl')
 model = model_data['model']
-scaler = model_data['scaler']
+scaler = model_data.get('scaler')  # might be None if not used
+vectorizer = model_data['vectorizer']
 feature_columns = model_data['feature_columns']
 
 from feature_engineering import FeatureEngineer
